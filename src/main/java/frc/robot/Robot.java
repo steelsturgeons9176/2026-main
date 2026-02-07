@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.hal.HAL;
+import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -26,6 +28,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+    // This is used to track the use of kitbot code, while this code is not fully from the kitbot
+    // I still put it here because it asked nicely.
+    HAL.report(tResourceType.kResourceType_Framework, 10);
   }
 
   /**

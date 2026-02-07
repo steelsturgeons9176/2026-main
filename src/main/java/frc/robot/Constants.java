@@ -14,6 +14,33 @@ package frc.robot;
  */
 public final class Constants {
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final int OPERATOR_CONTROLLER_PORT = 1;
   }
+
+  public static final class FuelConstants {
+    public static final int FEEDER_MOTOR_ID = 6;
+    public static final int INTAKE_LAUNCHER_MOTOR_ID = 5;
+
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 60;
+  
+    public static final double INTAKING_FEEDER_VOLTAGE = -12;
+    public static final double INTAKING_INTAKE_VOLTAGE = 10;
+    public static final double LAUNCHING_FEEDER_VOLTAGE = 9;
+    public static final double LAUNCHING_LAUNCHER_VOLTAGE = 10.6;
+    public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
+    public static final double SPIN_UP_SECONDS = 1;
+  }
+
+  /* public static final class ClimbConstants {
+    public static final int CLIMB_LEAD_ID;
+    public static final int CLIMB_FOLLOW_ID;
+
+    public static final int CLIMB_LEAD_CURRENT_LIMIT;
+    public static final int CLIMB_FOLLOW_CURRENT_LIMIT;
+
+    public static final int CLIMBING_LEAD_VOLTAGE;
+    public static final int CLIMBING_FOLLOW_VOLTAGE;
+  } */
 }
