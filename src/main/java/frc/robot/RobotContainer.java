@@ -4,9 +4,11 @@
 
 package frc.robot;
 
-// Commands
+// Autos
 import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
+
+// Commands
+import frc.robot.commands.*;
 
 // Constants
 import frc.robot.Constants.OperatorConstants;
@@ -14,9 +16,6 @@ import frc.robot.Constants.OperatorConstants;
 // Subsystems
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.FuelSubsystem;
-
-// Autos
-import frc.robot.commands.
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -33,12 +32,12 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final FuelSubsystem fuelSubsystem = new FuelSubsystem();
-
+  private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandPS4Controller m_driverController =
+  private final CommandPS4Controller driverController =
       new CommandPS4Controller(OperatorConstants.DRIVER_CONTROLLER_PORT);
-  private final CommandXboxController m_operatorController = 
+  private final CommandXboxController operatorController = 
       new CommandXboxController(OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
   // The autonomous chooser
@@ -52,7 +51,7 @@ public class RobotContainer {
     // Set the options to show up in the Dashboard for selecting auto modes. If you
     // add additional auto modes you can add additional lines here with
     // autoChooser.addOption
-    autoChooser.setDefaultOption("Autonomous", new ExampleAuto);
+    autoChooser.setDefaultOption("Autonomous", );
   }
 
   /**
@@ -66,12 +65,13 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    operatorController.leftBumper().whileTrue(new Intake(fuelSubsystem));
 
+    operatorController.rightBumper().whileTrue(new LaunchSequence(fuelSubsystem));
+
+    operatorController.a().whileTrue(new Eject(fuelSubsystem));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**
@@ -81,6 +81,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return Autos.exampleAuto(exampleSubsystem);
   }
 }

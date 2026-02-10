@@ -40,7 +40,7 @@ public final class Constants {
     public static final int CLIMB_LEAD_CURRENT_LIMIT;
     public static final int CLIMB_FOLLOW_CURRENT_LIMIT;
 
-    public static final int CLIMBING_LEAD_VOLTAGE;
-    public static final int CLIMBING_FOLLOW_VOLTAGE;
+    public static final int CLIMBING_UP_VOLTAGE;
+    public static final int CLIMBING_DOWN_VOLTAGE;
   } */
 }
