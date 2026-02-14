@@ -19,6 +19,8 @@ public final class Constants {
   }
 
   public static final class FuelConstants {
+    // The intake_launcher is the outer motor
+    // The feeder is the inner motor
     public static final int FEEDER_MOTOR_ID = 6;
     public static final int INTAKE_LAUNCHER_MOTOR_ID = 5;
 
@@ -33,14 +35,38 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 1;
   }
 
-  /* public static final class ClimbConstants {
-    public static final int CLIMB_LEAD_ID;
-    public static final int CLIMB_FOLLOW_ID;
+  public static final class ClimbConstants {
+    // The intake is in the front
+    // The climb is on the left side
+    public static final int CLIMB_FRONT_ID = 3;
+    public static final int CLIMB_BACK_ID = 4;
 
-    public static final int CLIMB_LEAD_CURRENT_LIMIT;
-    public static final int CLIMB_FOLLOW_CURRENT_LIMIT;
+    public static final int CLIMB_CURRENT_LIMIT = 60;
 
-    public static final int CLIMBING_UP_VOLTAGE;
-    public static final int CLIMBING_DOWN_VOLTAGE;
-  } */
+    // public static final int CLIMBING_UP_VOLTAGE;
+    // public static final int CLIMBING_DOWN_VOLTAGE;
+
+    public static final double CLIMB_P = 0;
+    public static final double CLIMB_I = 0;
+    public static final double CLIMB_D = 0;
+  }
+
+  public static final class SwerveConstants {
+    // The intake is in the front
+    // Left/right is from the robot's perspective
+    public static final int FRONT_RIGHT_ANGLE_ID = 21;
+    public static final int BACK_RIGHT_ANGLE_ID = 22;
+    public static final int BACK_LEFT_ANGLE_ID = 23;
+    public static final int FRONT_LEFT_ANGLE_ID = 24;
+    
+    public static final int FRONT_RIGHT_DRIVE_ID = 31;
+    public static final int BACK_RIGHT_DRIVE_ID = 32;
+    public static final int BACK_LEFT_DRIVE_ID = 33;
+    public static final int FRONT_LEFT_DRIVE_ID = 34;
+
+    public static final int FRONT_RIGHT_CAN_ID = 11;
+    public static final int BACK_RIGHT_CAN_ID = 12;
+    public static final int BACK_LEFT_CAN_ID = 13;
+    public static final int FRONT_LEFT_CAN_ID = 14;
+  }
 }

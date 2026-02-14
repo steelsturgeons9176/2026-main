@@ -7,9 +7,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static edu.wpi.first.units.Units.Amps;
 
+// CTR Electronics imports
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
-// CTR Electronics imports
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
@@ -19,15 +19,14 @@ import static frc.robot.Constants.FuelConstants.*;
 
 public class FuelSubsystem extends SubsystemBase{
     // Create the intake and feeder motors
-    private final TalonFX feederRoller;
-    private final TalonFX intakeLauncherRoller;
+    private final TalonFX m_feederRoller;
+    private final TalonFX m_intakeLauncherRoller;
     
     // The constructor
-    
     public FuelSubsystem() {
         // Define the motors in the constructor
-        intakeLauncherRoller = new TalonFX(INTAKE_LAUNCHER_MOTOR_ID);
-        feederRoller = new TalonFX(FEEDER_MOTOR_ID);
+        m_intakeLauncherRoller = new TalonFX(INTAKE_LAUNCHER_MOTOR_ID);
+        m_feederRoller = new TalonFX(FEEDER_MOTOR_ID);
         
         //Configure the motors using a TalonFXConfiguration
         TalonFXConfiguration feederConfig = new TalonFXConfiguration()
@@ -51,24 +50,24 @@ public class FuelSubsystem extends SubsystemBase{
         
         
         // Configure the motors using the configs
-        feederRoller.getConfigurator().apply(feederConfig);
-        intakeLauncherRoller.getConfigurator().apply(launcherConfig);
+        m_feederRoller.getConfigurator().apply(feederConfig);
+        m_intakeLauncherRoller.getConfigurator().apply(launcherConfig);
     }
 
 // A method to set the voltage of the intake roller
   public void setIntakeLauncherRoller(double voltage) {
-    intakeLauncherRoller.setVoltage(voltage);
+    m_intakeLauncherRoller.setVoltage(voltage);
   }
 
   // A method to set the voltage of the intake roller
   public void setFeederRoller(double voltage) {
-    feederRoller.setVoltage(voltage);
+    m_feederRoller.setVoltage(voltage);
   }
 
   // A method to stop the rollers
   public void stop() {
-    feederRoller.set(0);
-    intakeLauncherRoller.set(0);
+    m_feederRoller.set(0);
+    m_intakeLauncherRoller.set(0);
   }
 
   @Override

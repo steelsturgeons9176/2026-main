@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
 
     // This is used to track the use of kitbot code, while this code is not fully from the kitbot
     // I still put it here because it asked nicely.
+    enableLiveWindowInTest(true);
     HAL.report(tResourceType.kResourceType_Framework, 10);
   }
 
