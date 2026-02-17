@@ -32,4 +32,15 @@ public class ClimbSubsystem extends SubsystemBase{
     m_climbFront.getConfigurator().apply(climbConfig);
   }
 
+
+  public void stop() {
+    m_climbBack;
+    m_climbFront;
+  }
+
+  @Override
+  public void periodic() {
+    // Hey Jimmy gimme a periodic with NOTHIN
+    // Nutinnnnnn????
+  }
 }
