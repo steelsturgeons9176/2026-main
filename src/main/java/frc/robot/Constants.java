@@ -24,8 +24,8 @@ public final class Constants {
     public static final int FEEDER_MOTOR_ID = 6;
     public static final int INTAKE_LAUNCHER_MOTOR_ID = 5;
 
-    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
-    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 60;
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 40;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 40;
   
     public static final double INTAKING_FEEDER_VOLTAGE = -12;
     public static final double INTAKING_INTAKE_VOLTAGE = 10;
@@ -41,14 +41,21 @@ public final class Constants {
     public static final int CLIMB_FRONT_ID = 3;
     public static final int CLIMB_BACK_ID = 4;
 
-    public static final int CLIMB_CURRENT_LIMIT = 60;
+    public static final int CLIMB_CURRENT_LIMIT = 40;
+    public static final int CLIMB_TRAP_MAXV;
+    public static final int CLIMB_TRAP_MAXA;
 
     // public static final int CLIMBING_UP_VOLTAGE;
     // public static final int CLIMBING_DOWN_VOLTAGE;
 
-    public static final double CLIMB_P = 0;
-    public static final double CLIMB_I = 0;
-    public static final double CLIMB_D = 0;
+    public static final double CLIMB_P;
+    public static final double CLIMB_I;
+    public static final double CLIMB_D;
+
+    public static final double CLIMB_S;
+    public static final double CLIMB_G;
+    public static final double CLIMB_V;
+    public static final double CLIMB_A = 0;
   }
 
   public static final class SwerveConstants {
