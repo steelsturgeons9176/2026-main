@@ -34,7 +34,11 @@ public class FuelSubsystem extends SubsystemBase{
                 new CurrentLimitsConfigs()
                     .withStatorCurrentLimit(Amps.of(FEEDER_MOTOR_CURRENT_LIMIT))
                     .withStatorCurrentLimitEnable(true)
-            );
+            )
+              .withMotorOutput(
+                new MotorOutputConfigs()
+                  .withInverted(InvertedValue.Clockwise_Positive)
+              );
 
 
         TalonFXConfiguration launcherConfig = new TalonFXConfiguration()
