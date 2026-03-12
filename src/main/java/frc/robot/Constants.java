@@ -41,7 +41,9 @@ public final class Constants {
     public static final int CLIMB_FRONT_ID = 3;
     public static final int CLIMB_BACK_ID = 4;
 
-    public static final int CLIMB_CURRENT_LIMIT = 40;
+    public static final int CLIMB_CURRENT_LIMIT = 60;
+
+    public static final double CLIMBING_UP_VOLTAGE = 5;
   }
 
   public static final class SwerveConstants {
