@@ -14,7 +14,6 @@ import frc.robot.commands.*;
 import frc.robot.Constants.OperatorConstants;
 
 // Subsystems
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.FuelSubsystem;
 import frc.robot.subsystems.Swerve.TunerConstants;
 import frc.robot.subsystems.Swerve.CommandSwerveDrivetrain;
@@ -23,13 +22,20 @@ import frc.robot.subsystems.Swerve.CommandSwerveDrivetrain;
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
+// Pathplanner
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.FollowPathCommand;
+
 // WPILIBJ
 import static edu.wpi.first.units.Units.*;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
@@ -56,7 +62,6 @@ public class RobotContainer {
 
   // The robot's subsystems and commands are defined here...
   private final FuelSubsystem fuelSubsystem = new FuelSubsystem();
-  private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -67,17 +72,26 @@ public class RobotContainer {
     OperatorConstants.DRIVER_CONTROLLER_PORT);
 
   // The autonomous chooser
-  private final SendableChooser<Command> autoChooser = new SendableChooser<>();
+  private final SendableChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the trigger bindings
-    configureBindings();
-
+    NamedCommands.registerCommand("Launch", new LaunchSequence(fuelSubsystem));
+    NamedCommands.registerCommand("Eject", new Eject(fuelSubsystem));
+    NamedCommands.registerCommand("Intake", new Intake(fuelSubsystem));
+    
+    autoChooser = AutoBuilder.buildAutoChooser();
+    
     // Set the options to show up in the Dashboard for selecting auto modes. If you
     // add additional auto modes you can add additional lines here with
     // autoChooser.addOption
-    autoChooser.setDefaultOption("Autonomous", Autos.exampleAuto(exampleSubsystem));
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+
+    CommandScheduler.getInstance().schedule(FollowPathCommand.warmupCommand());
+
+    // Configure the trigger bindings
+    configureBindings();
+
   }
 
   /**
@@ -142,6 +156,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(exampleSubsystem);
+    return autoChooser.getSelected();
   }
 }

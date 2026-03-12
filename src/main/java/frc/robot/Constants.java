@@ -35,28 +35,16 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 1;
   }
 
-  // public static final class ClimbConstants {
-  //   // The intake is in the front
-  //   // The climb is on the left side
-  //   public static final int CLIMB_FRONT_ID = 3;
-  //   public static final int CLIMB_BACK_ID = 4;
+  public static final class ClimbConstants {
+    // The intake is in the front
+    // The climb is on the left side
+    public static final int CLIMB_FRONT_ID = 3;
+    public static final int CLIMB_BACK_ID = 4;
 
-  //   public static final int CLIMB_CURRENT_LIMIT = 40;
-  //   public static final int CLIMB_TRAP_MAXV;
-  //   public static final int CLIMB_TRAP_MAXA;
+    public static final int CLIMB_CURRENT_LIMIT = 60;
 
-  //   public static final int CLIMBING_UP_VOLTAGE;
-  //   public static final int CLIMBING_DOWN_VOLTAGE;
-
-  //   public static final double CLIMB_P;
-  //   public static final double CLIMB_I;
-  //   public static final double CLIMB_D;
-
-  //   public static final double CLIMB_S;
-  //   public static final double CLIMB_G;
-  //   public static final double CLIMB_V;
-  //   public static final double CLIMB_A = 0;
-  // }
+    public static final double CLIMBING_UP_VOLTAGE = 5;
+  }
 
   public static final class SwerveConstants {
     // The intake is in the front
