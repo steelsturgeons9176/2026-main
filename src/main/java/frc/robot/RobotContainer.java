@@ -4,14 +4,12 @@
 
 package frc.robot;
 
-// Autos
-
-
 // Commands
 import frc.robot.commands.*;
 
 // Constants
 import frc.robot.Constants.OperatorConstants;
+import static frc.robot.Constants.FuelConstants.*;
 
 // Subsystems
 import frc.robot.subsystems.FuelSubsystem;
@@ -27,7 +25,8 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.FollowPathCommand;
 
-// WPILIBJ
+
+// First
 import static edu.wpi.first.units.Units.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -60,13 +59,14 @@ public class RobotContainer {
 
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
-  // The robot's subsystems and commands are defined here...
+  // Subsystems :P
   private final FuelSubsystem fuelSubsystem = new FuelSubsystem();
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+
   
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController operatorController = 
-  new CommandXboxController(OperatorConstants.OPERATOR_CONTROLLER_PORT);
+  // Controllers
+  private final CommandXboxController operatorController = new CommandXboxController(
+    OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
   private final CommandPS4Controller driverController = new CommandPS4Controller(
     OperatorConstants.DRIVER_CONTROLLER_PORT);
@@ -76,9 +76,11 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    NamedCommands.registerCommand("Launch", new LaunchSequence(fuelSubsystem));
+    NamedCommands.registerCommand("Launch Far", new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_FAR_VOLTAGE));
+    NamedCommands.registerCommand("Launch Close", new Launch(fuelSubsystem, LAUNCHING_LAUNCHER_CLOSE_VOLTAGE));
     NamedCommands.registerCommand("Eject", new Eject(fuelSubsystem));
     NamedCommands.registerCommand("Intake", new Intake(fuelSubsystem));
+    NamedCommands.registerCommand("Stop", new StopFuel(fuelSubsystem));
     
     autoChooser = AutoBuilder.buildAutoChooser();
     
@@ -107,9 +109,15 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     operatorController.leftBumper().whileTrue(new Intake(fuelSubsystem));
 
-    operatorController.rightBumper().whileTrue(new LaunchSequence(fuelSubsystem));
 
-    operatorController.a().whileTrue(new Eject(fuelSubsystem));
+    operatorController.b().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_FAR_VOLTAGE));
+    operatorController.y().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_MID_VOLTAGE));
+    operatorController.x().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_CLOSE_VOLTAGE));
+    
+
+    operatorController.a().whileTrue(new StopFuel(fuelSubsystem));
+    
+    operatorController.rightBumper().whileTrue(new Eject(fuelSubsystem));
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
 

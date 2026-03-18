@@ -14,10 +14,12 @@ public class SpinUp extends Command {
   /** Creates a new Intake. */
 
   FuelSubsystem fuelSubsystem;
+  double launchSpeed;
 
-  public SpinUp(FuelSubsystem fuelSystem) {
+  public SpinUp(FuelSubsystem fuelSystem, double speed) {
     addRequirements(fuelSystem);
     this.fuelSubsystem = fuelSystem;
+    this.launchSpeed = speed;
   }
 
   // Called when the command is initially scheduled. Set the rollers to the
@@ -26,7 +28,7 @@ public class SpinUp extends Command {
   public void initialize() {
     fuelSubsystem
         .setIntakeLauncherRoller(
-            SmartDashboard.getNumber("Launching launcher roller value", LAUNCHING_LAUNCHER_VOLTAGE));
+            SmartDashboard.getNumber("Launching launcher roller value", launchSpeed));
     fuelSubsystem.setFeederRoller(SmartDashboard.getNumber("Launching spin-up feeder value", SPIN_UP_FEEDER_VOLTAGE));
   }
 
