@@ -13,13 +13,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Launch Far"
+            "name": "Launch Mid"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 10.0
+            "waitTime": 15.0
           }
         },
         {

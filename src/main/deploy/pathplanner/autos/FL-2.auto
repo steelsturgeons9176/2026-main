@@ -7,19 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "3 to Top Out"
+            "pathName": "2 to FL"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Intake"
+            "name": "Launch Mid"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "Top Out Through"
+            "waitTime": 15.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Stop"
           }
         }
       ]

@@ -77,7 +77,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     NamedCommands.registerCommand("Launch Far", new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_FAR_VOLTAGE));
-    NamedCommands.registerCommand("Launch Close", new Launch(fuelSubsystem, LAUNCHING_LAUNCHER_CLOSE_VOLTAGE));
+    NamedCommands.registerCommand("Launch Mid", new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_MID_VOLTAGE));
+    NamedCommands.registerCommand("Launch Close", new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_CLOSE_VOLTAGE));
     NamedCommands.registerCommand("Eject", new Eject(fuelSubsystem));
     NamedCommands.registerCommand("Intake", new Intake(fuelSubsystem));
     NamedCommands.registerCommand("Stop", new StopFuel(fuelSubsystem));
@@ -113,7 +114,6 @@ public class RobotContainer {
     operatorController.b().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_FAR_VOLTAGE));
     operatorController.y().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_MID_VOLTAGE));
     operatorController.x().whileTrue(new LaunchSequence(fuelSubsystem, LAUNCHING_LAUNCHER_CLOSE_VOLTAGE));
-    
 
     operatorController.a().whileTrue(new StopFuel(fuelSubsystem));
     

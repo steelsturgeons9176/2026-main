@@ -37,7 +37,8 @@ public class FuelSubsystem extends SubsystemBase{
             )
               .withMotorOutput(
                 new MotorOutputConfigs()
-                  .withInverted(InvertedValue.Clockwise_Positive)
+                .withInverted(InvertedValue.Clockwise_Positive)
+                //  .withInverted(InvertedValue.CounterClockwise_Positive)
               );
 
 
@@ -50,6 +51,7 @@ public class FuelSubsystem extends SubsystemBase{
             .withMotorOutput(
                 new MotorOutputConfigs()
                     .withInverted(InvertedValue.CounterClockwise_Positive)
+                    // .withInverted(InvertedValue.Clockwise_Positive)
                 );
         
         
